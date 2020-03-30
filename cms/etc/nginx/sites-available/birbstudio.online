@@ -1,0 +1,16 @@
+server {
+  listen 80;
+  server_name birbstudio.online;
+
+  include /etc/nginx/snippets/security.conf; 
+
+  location / {
+    proxy_pass http://cms;
+    proxy_intercept_errors on;
+    include /etc/nginx/snippets/proxy.conf;
+  }
+
+  include /etc/nginx/snippets/general.conf;
+  include /etc/nginx/snippets/error.conf;
+}
+
